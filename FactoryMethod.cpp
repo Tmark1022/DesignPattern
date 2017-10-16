@@ -1,16 +1,16 @@
-/*
-¹¤³§·½·¨
+ï»¿/*
+å·¥å‚æ–¹æ³•
 */
 #include<iostream>
 using namespace std;
 
-// ²úÆ·»ùÀà
+// äº§å“åŸºç±»
 class ProductBase{
 public:
 	virtual void operation() = 0;
 };
 
-// ¾ßÌå²úÆ·ÀàA
+// å…·ä½“äº§å“ç±»A
 class ProductA : public ProductBase{
 public:
 	virtual void operation(){
@@ -18,7 +18,7 @@ public:
 	}
 };
 
-// ¾ßÌå²úÆ·ÀàB
+// å…·ä½“äº§å“ç±»B
 class ProductB : public ProductBase{
 public:
 	virtual void operation(){
@@ -26,13 +26,13 @@ public:
 	}
 };
 
-// ¹¤³§»ùÀà
+// å·¥å‚åŸºç±»
 class FactoryBase{
 public:
 	virtual ProductBase * create() = 0;
 };
 
-// ¾ßÌå¹¤³§ÀàA
+// å…·ä½“å·¥å‚ç±»A
 class FactoryMethodA{
 public:
 	virtual ProductBase * create(){
@@ -40,7 +40,7 @@ public:
 	}
 };
 
-// ¾ßÌå¹¤³§ÀàB
+// å…·ä½“å·¥å‚ç±»B
 class FactoryMethodB{
 public:
 	virtual ProductBase * create(){
