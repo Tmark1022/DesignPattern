@@ -1,6 +1,6 @@
-/*
-	Ä£°å·½·¨Ä£Ê½
-	¶¨ÒåÒ»Ğ©ÀàËÆÓÚ¹³×ÓhookµÄ¿Õº¯Êı£¬µÈ´ıµ½ÁË×ÓÀàÔÚ¾ßÌåÊµÏÖ¡£
+ï»¿/*
+	æ¨¡æ¿æ–¹æ³•æ¨¡å¼
+	å®šä¹‰ä¸€äº›ç±»ä¼¼äºé’©å­hookçš„ç©ºå‡½æ•°ï¼Œç­‰å¾…åˆ°äº†å­ç±»åœ¨å…·ä½“å®ç°ã€‚
 */
 #include<iostream>
 using namespace std;
@@ -8,7 +8,7 @@ using namespace std;
 class TestPaper{
 public:
 	void question(){
-		cout << "ÄãÊÇ¸ß±È°İÈÊ£¿" << endl;
+		cout << "ä½ æ˜¯é«˜æ¯”æ‹œä»ï¼Ÿ" << endl;
 		cout << answer() << endl;
 	}
 
