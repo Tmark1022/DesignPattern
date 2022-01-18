@@ -6,81 +6,85 @@
 #include<iostream>
 using namespace std;
 
-class AbstractProduct{
+
+
+/*
+	每一代产品有手机和手表两种， 创建抽象工厂，用于实例化每一代产品里的所有产品
+   */
+
+// 产品 : 手机
+class AbstractProductPhone{
 public:
 	virtual void show() = 0;
+	void call() {cout << "我能打电话" << endl;} 
 };
 
+class ConcreteProductPhone1 : public AbstractProductPhone{
+public:
+	virtual void show(){
+		cout << "1代手机" << endl;
+	}
+};
 
-// 产品线1
-class AbstractProductLine1 :public AbstractProduct{
+class ConcreteProductPhone2 : public AbstractProductPhone{
+public:
+	virtual void show(){
+		cout << "2代手机" << endl;
+	}
+};
+
+// 产品 : 手表 
+class AbstractProductWatch{
 public:
 	virtual void show() = 0;
+	void time() {cout << "我能看时间" << endl;}
 };
 
-class ConcreteProductLine1A : public AbstractProductLine1{
+class ConcreteProductWatch1 : public AbstractProductWatch{
 public:
 	virtual void show(){
-		cout << "line 1, ConcreteProductA" << endl;
+		cout << "1代手表" << endl;
 	}
 };
 
-class ConcreteProductLine1B : public AbstractProductLine1{
+class ConcreteProductWatch2 : public AbstractProductWatch{
 public:
 	virtual void show(){
-		cout << "line 1, ConcreteProductB" << endl;
+		cout << "2代手表" << endl;
 	}
 };
 
-
-// 产品线2
-class AbstractProductLine2 :public AbstractProduct{
-public:
-	virtual void show() = 0;
-};
-
-class ConcreteProductLine2A : public AbstractProductLine2{
-public:
-	virtual void show(){
-		cout << "line 2, ConcreteProductA" << endl;
-	}
-};
-
-class ConcreteProductLine2B : public AbstractProductLine2{
-public:
-	virtual void show(){
-		cout << "line 2, ConcreteProductB" << endl;
-	}
-};
 
 // 抽象工厂类
 class AbstarctFactory{
 public:
-	virtual AbstractProduct* CreateProductA() = 0;
-	virtual AbstractProduct* CreateProductB() = 0;
+	virtual AbstractProductPhone* CreateProductPhone() = 0;
+	virtual AbstractProductWatch* CreateProductWatch() = 0;
 };
 
-// 产品线1的工厂
-class Line1Factory : public AbstarctFactory{
+
+
+// 第一代产品系列工厂
+class FactoryGeneration1 : public AbstarctFactory{
 public:
-	virtual AbstractProduct* CreateProductA(){
-		return new ConcreteProductLine1A();
+	virtual AbstractProductPhone* CreateProductPhone(){
+		return new ConcreteProductPhone1();
 	}
 
-	virtual AbstractProduct* CreateProductB(){
-		return new ConcreteProductLine1B();
+	virtual AbstractProductWatch* CreateProductWatch(){
+		return new ConcreteProductWatch1();
 	}
 };
 
-// 产品线2的工厂
-class Line2Factory : public AbstarctFactory{
+// 第二代产品系列工厂
+class FactoryGeneration2 : public AbstarctFactory{
 public:
-	virtual AbstractProduct* CreateProductA(){
-		return new ConcreteProductLine2A();
+	virtual AbstractProductPhone* CreateProductPhone(){
+		return new ConcreteProductPhone2();
 	}
 
-	virtual AbstractProduct* CreateProductB(){
-		return new ConcreteProductLine2B();
+	virtual AbstractProductWatch* CreateProductWatch(){
+		return new ConcreteProductWatch2();
 	}
 };
 
@@ -88,16 +92,18 @@ public:
 int main(int argc, char * argv[]){
 
 	// 创建抽象工厂对象（当更换产品线时，只需要更改这个就可以了）
-	// AbstarctFactory * factory = new Line1Factory();
-	AbstarctFactory * factory = new Line2Factory();
+	// AbstarctFactory * factory = new FactoryGeneration1();
+	AbstarctFactory * factory = new FactoryGeneration2();
 
 	// 创建具体的产品对象
-	AbstractProduct * product_a = factory->CreateProductA();
-	AbstractProduct * product_b = factory->CreateProductB();
+	AbstractProductPhone * product_phone = factory->CreateProductPhone();
+	AbstractProductWatch * product_watch = factory->CreateProductWatch();
 
 	// 输出
-	product_a->show();
-	product_b->show();
+	product_phone->show();
+	product_phone->call();
+	product_watch->show();
+	product_watch->time();
 
 	return 0;
 }
