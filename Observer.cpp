@@ -11,6 +11,7 @@
 	这里，我们用微信用户订阅微信公众号来说明观察者模式
 */
 
+#include <algorithm>
 #include<iostream>
 #include<vector>
 #include<string>
